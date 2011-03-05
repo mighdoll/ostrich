@@ -38,7 +38,7 @@ object AdminHttpServiceSpec extends Specification {
     doBefore {
       Logger.reset()
       Logger.get("").setLevel(Level.OFF)
-      service = new AdminHttpService(PORT, BACKLOG, new RuntimeEnvironment(getClass))
+      service = new AdminHttpService(PORT, BACKLOG)
       service.start()
     }
 

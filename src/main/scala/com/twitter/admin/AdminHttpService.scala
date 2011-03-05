@@ -213,9 +213,9 @@ class CommandRequestHandler(commandHandler: CommandHandler) extends CgiRequestHa
   }
 }
 
-class AdminHttpService(port: Int, backlog: Int, runtime: RuntimeEnvironment) extends Service {
+class AdminHttpService(port: Int, backlog: Int) extends Service {
   val httpServer: HttpServer = HttpServer.create(new InetSocketAddress(port), backlog)
-  val commandHandler = new CommandHandler(runtime)
+  val commandHandler = new CommandHandler()
 
   def address = httpServer.getAddress
 

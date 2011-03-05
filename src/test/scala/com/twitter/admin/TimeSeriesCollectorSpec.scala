@@ -103,7 +103,7 @@ object TimeSeriesCollectorSpec extends Specification {
         Stats.incr("dogs", 1)
         collector.collector.periodic()
 
-        val service = new AdminHttpService(0, 20, new RuntimeEnvironment(getClass))
+        val service = new AdminHttpService(0, 20)
         collector.registerWith(service)
         service.start()
         val port = service.address.getPort
@@ -129,7 +129,7 @@ object TimeSeriesCollectorSpec extends Specification {
         Stats.addMetric("run", 20)
         collector.collector.periodic()
 
-        val service = new AdminHttpService(0, 20, new RuntimeEnvironment(getClass))
+        val service = new AdminHttpService(0, 20)
         collector.registerWith(service)
         service.start()
         val port = service.address.getPort

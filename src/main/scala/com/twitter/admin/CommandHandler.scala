@@ -32,7 +32,7 @@ object Format {
   case object Json extends Format
 }
 
-class CommandHandler(runtime: RuntimeEnvironment) {
+class CommandHandler() {
   private def build(obj: Any): List[String] = {
     obj match {
       case m: Map[_, _] =>
@@ -95,10 +95,10 @@ class CommandHandler(runtime: RuntimeEnvironment) {
         Stats.toMap
       case "server_info" =>
         val mxRuntime = ManagementFactory.getRuntimeMXBean()
-        immutable.Map("name" -> runtime.jarName,
-                      "version" -> runtime.jarVersion,
-                      "build" -> runtime.jarBuild,
-                      "build_revision" -> runtime.jarBuildRevision,
+        immutable.Map("name" -> "unknownName",
+                      "version" -> "unknownJar",
+                      "build" -> "unknownBuild",
+                      "build_revision" -> "unknownBuildRevision",
                       "start_time" -> (new Date(mxRuntime.getStartTime())).toString,
                       "uptime" -> mxRuntime.getUptime())
       case "threads" =>

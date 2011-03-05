@@ -86,7 +86,7 @@ class AdminServiceConfig extends Config[RuntimeEnvironment => Option[AdminHttpSe
 
   def apply() = { (runtime: RuntimeEnvironment) =>
     val adminHttpService = httpPort.map { port =>
-      val admin = new AdminHttpService(port, httpBacklog, runtime)
+      val admin = new AdminHttpService(port, httpBacklog)
       statsNodes.foreach { config =>
         config()(admin)
       }
